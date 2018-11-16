@@ -29,7 +29,9 @@ Crack
 For this project I decided to try and implement a neural net. A neural net is a deep learning tool that adds hidden layers into  model.  These layers add weights to the model that humans can have a tough time understanding.  
 
 <img src="https://cdn-images-1.medium.com/max/800/1*NQQiyYqJJj4PSYAeWvxutg.png">
-<sub><sup> Source: https://www.mathworks.com/videos/introduction-to-deep-learning-what-are-convolutional-neural-networks--1489512765771.html<sub><sup>
+
+<sub><sup> Source: https://www.mathworks.com/videos/introduction-to-deep-learning-what-are-convolutional-neural-networks--1489512765771.html <sub><sup>
+
 
 ### Initial Neural Net
 The initial net I decided to implement was based off the Keras image classification blog, https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html.  The net consists of three convolution layers with relu activation functions, a dense layer with relu activation and 0.5 drop out and a final dense layer with a sigmoid activation function.
@@ -40,10 +42,13 @@ On paper this model looked great during training.  Accuracies ranged from 80-90%
 Once the test and train data generators were fixed for sending both classes of images in the model got 50% accuracy with lower losses of roughly 0.7.  This model made much more sense.  
 
 ### Back to the drawing board
-The next model I built added complexity with two extra hidden layers and increased the number of filters at each layer of the model.  
+The next model I built added complexity with two extra hidden layers and increased the number of filters at each layer of the model.  I believed this would help the model pick up on more features due to the differing aggregate used in the concrete.
 
 #### Model Performance
 This model performed some what better with accuracies of around 65% and losses at 0.6 with only 25 epochs.  This model performed much better and showed promise with the lower loss values.  
+
+#### Speculation about performance
+I am only using 1000 of the 56,000 images.  This does not look to be enough for the network to pick up on the correct feature maps.  I suspect if I trained on a bigger set of the pictures my model would begin to pick up on these nuances in the data and would begin to perform better.  There is also quite a bit of noise in the data with the varying sizes of aggregate in the pictures.  
 
 Lets look into the convolution layers to see if we can see anything that the model is picking up on.
 
@@ -81,6 +86,8 @@ The images are very 'noisy' they contain mostly dead image space with sparse cra
 ![]()
 
 ##### GPU Issue!!
+
+Tensorflow-gpu does not work out of the box with Nvidia's Cuda library version 10.0.  In order to get this to work I would have had to download Tensorflows source code and make edits to it.  It does however work for version 8 and 9 of the Nvidia Cuda libraries.  Also I tried the easy one step install Frank sent out and had no luck.  I will be un-installing my current Cuda version 10 with 8 or 9 during break.
 
 
 ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
