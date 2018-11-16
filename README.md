@@ -7,7 +7,7 @@ The purpose of this project was to train a neural net to detect if a picture of 
 <sub><sup>source: https://www.usbr.gov/lc/region/feature/gallery-rope-team/Beginning-the-descent.jpg</sup></sub>
 
 ### Data
-The data was sourced from the University of Utah and consists of labeled crack and no crack data.  The images are 256 X 256 with RGB color.  The images are of three differing types of structures bridges decks, walls, and pavement.  There are a few differing types of substrates used in the images.
+The data was sourced from the University of Utah and consists of labeled crack and no crack data.  The images are 256 X 256 with RGB color.  The images are of three differing types of structures bridges decks, walls, and pavement.  There are 200 different structures which adds to the complexity of the data.  There are different aggregate sizes and colors used throughout the set.
 
 ##### Bridge Deck
 Crack
@@ -26,7 +26,7 @@ Crack
 
 
 ### Model - Convolutional Neural Net
-For this project I decided to try and implement a neural net. A neural net is a deep learning tool that adds hidden layers into  model.  These layers add weights to the model that humans can have a tough time understanding.  
+For this project I decided to try and implement a convolutional neural net. A neural net is a deep learning tool that adds hidden layers into  model.  These layers add weights to the model that humans can have a tough time understanding.  
 
 <img src="https://cdn-images-1.medium.com/max/800/1*NQQiyYqJJj4PSYAeWvxutg.png">
 
@@ -92,12 +92,26 @@ Forth convolution layer
 
 ##### What is the model misclassifying
 The images are very 'noisy' they contain mostly dead image space with sparse cracks.  Looking though the images it appears that most edge cases get missed labeled.  It is also tough for the model to detect cracks when the concrete has aggregate base.  
-![]()
-![]()
-![]()
-![]()
-![]()
-![]()
+
+Not a crack but classified as a crack
+
+
+![](data/images/test_train_small/NO_crack/001-12.jpg)
+![](data/images/test_train_small/NO_crack/001-16.jpg)
+
+Crack but classified as not a crack
+
+
+![](data/images/test_train_small/crack/002-125.jpg)
+![](data/images/test_train_small/crack/7001-21.jpg)
+![](data/images/test_train_small/crack/7001-27.jpg)
+
+Definitely a Crack
+
+![](data/images/test_train_small/crack/7070-211.jpg)
+![](data/images/test_train_small/crack/002-99.jpg)
+
+
 
 ##### GPU Issue!!
 
@@ -108,7 +122,8 @@ Tensorflow-gpu does not work out of the box with Nvidia's Cuda library version 1
   * I believe this would allow for better classification.
 * Look at existing papers that use this set of data.  I just found that there was some work done on this data last year
 * Get my GPU working with tensorflow or use a different Keras backend.
-* Apply network to an actual structure to see if I can identify cracked areas.   
+* Apply network to an actual structure to see if I can identify cracked areas.  
+* Print out each convolution layer with a crack to see what is being activated.
 
 
 
