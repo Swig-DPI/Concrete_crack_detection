@@ -115,20 +115,20 @@ The images are very 'noisy' they contain mostly dead image space with sparse cra
 Not a crack but classified as a crack
 
 
-![](data/images/test_train_small/NO_crack/001-12.jpg)
-![](data/images/test_train_small/NO_crack/001-16.jpg)
+![](images/test_train_small/NO_crack/001-12.jpg)
+![](images/test_train_small/NO_crack/001-16.jpg)
 
 Crack but classified as not a crack
 
 
-![](data/images/test_train_small/crack/002-125.jpg)
-![](data/images/test_train_small/crack/7001-21.jpg)
-![](data/images/test_train_small/crack/7001-27.jpg)
+![](images/test_train_small/crack/002-125.jpg)
+![](images/test_train_small/crack/7001-21.jpg)
+![](images/test_train_small/crack/7001-27.jpg)
 
 Definitely a Crack
 
-![](data/images/test_train_small/crack/7070-211.jpg)
-![](data/images/test_train_small/crack/002-99.jpg)
+![](images/test_train_small/crack/7070-211.jpg)
+![](images/test_train_small/crack/002-99.jpg)
 
 
 
