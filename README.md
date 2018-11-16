@@ -35,6 +35,12 @@ For this project I decided to try and implement a convolutional neural net. A ne
 
 ### Initial Neural Net
 The initial net I decided to implement was based off the Keras image classification blog, https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html.  The net consists of three convolution layers with relu activation functions, a dense layer with relu activation and 0.5 drop out and a final dense layer with a sigmoid activation function.
+* 3 convolution layers with relu activation followed by a max pooling
+  * 32 (3X3)
+  * 32 (3X3)
+  * 64 (3X3)
+* Flatten to Dense 64 layer with relu activation and 0.5 drop out
+* Final Dense 1 layer with a sigmoid activation for binary classification.
 
 #### Model Performance
 On paper this model looked great during training.  Accuracies ranged from 80-90%.  The issue was that the losses were high 1.5-1.8.  Upon digging into this I saw that I was only testing on no crack images.  This means I was getting only one guess on the test and train sets giving a high accuracy and high loss.
@@ -44,10 +50,21 @@ Once the test and train data generators were fixed for sending both classes of i
 ### Back to the drawing board
 The next model I built added complexity with two extra hidden layers and increased the number of filters at each layer of the model.  I believed this would help the model pick up on more features due to the differing aggregate used in the concrete.
 
+* 5 convolution layers with relu activation followed by a max pooling
+  * 128 (3X3)
+  * 64 (3X3)
+  * 32 (3X3)
+  * 64 (3X3)
+  * 128 (3X3)
+* Flatten to Dense 64 layer with relu activation and 0.5 drop out
+* Final Dense 1 layer with a sigmoid activation for binary classification.
+
+
+
 #### Model Performance
 This model performed some what better with accuracies of around 65% and losses at 0.6 with only 15 epochs.  This model performed much better and showed promise with the lower loss values.  
 
-Look beautiful training
+Looked beautiful training
 
 
 <img src="images/Training_Acc.png" height="360" width="360">
@@ -62,8 +79,10 @@ Not so great validation
 
 
 #### Speculation about performance
-I am only using 1000 of the 56,000 images.  This does not look to be enough for the network to pick up on the correct feature maps.  I suspect if I trained on a bigger set of the pictures my model would begin to pick up on these nuances in the data and would begin to perform better.  There is also quite a bit of noise in the data with the varying sizes of aggregate in the pictures.  
+I am only using 1000 of the 56,000 images.  This does not look to be enough for the network to pick up on the correct feature maps.  I suspect if I trained on a bigger set of the pictures my model would begin to pick up on these nuances in the data and would begin to perform better.  There is also quite a bit of noise in the data with the varying sizes of aggregate in the pictures.  I also trained on an extra "cracky" set i created. It would have been better train on a less cracky set for better generalization.
 
+
+#### Convolution layers
 Lets look into the convolution layers to see if we can see anything that the model is picking up on.
 
 First convolution layer
