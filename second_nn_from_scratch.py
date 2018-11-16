@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 np.random.seed(1337)  # for reproducibility
 
-
+import keras
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
@@ -24,6 +24,14 @@ from keras.preprocessing.image import save_img
 
 K.tensorflow_backend._get_available_gpus()
 
+class LossHistory(keras.callbacks.Callback):
+    def on_train_begin(self, logs={}):
+        self.losses = []
+
+    def on_batch_end(self, batch, logs={}):
+        self.losses.append(logs.get('loss'))
+
+
 # dimensions of our images.
 img_width, img_height = 256, 256
 
@@ -31,7 +39,7 @@ train_data_dir = 'data/extra_cracky'
 validation_data_dir = 'data/test_train'
 nb_train_samples = 1000
 nb_validation_samples = 1000
-epochs = 25
+epochs = 15
 batch_size = 16
 
 if K.image_data_format() == 'channels_first':
@@ -74,7 +82,7 @@ model.compile(loss='binary_crossentropy',
 
 # this is the augmentation configuration we will use for training
 train_datagen = ImageDataGenerator(
-    rescale=1. / 255)
+    rescale=1. / 255,zca_whitening=True,horizontal_flip=True, vertical_flip=True)
 
 # this is the augmentation configuration we will use for testing:
 # only rescaling
@@ -92,16 +100,19 @@ validation_generator = test_datagen.flow_from_directory(
     batch_size=batch_size,
     class_mode='binary')
 
-
+checkpointer = keras.callbacks.ModelCheckpoint(filepath='weights_white_flip.hdf5', verbose=1, save_best_only=True)
+history = LossHistory()
+tens_board = keras.callbacks.TensorBoard(log_dir='./logs', histogram_freq=0, batch_size=32, write_graph=True, write_grads=False, write_images=False, embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None, embeddings_data=None, update_freq='epoch')
 ## Only run if you change the model
 history = model.fit_generator(
     train_generator,
     steps_per_epoch=nb_train_samples // batch_size,
     epochs=epochs,
     validation_data=validation_generator,
-    validation_steps=nb_validation_samples // batch_size)
+    validation_steps=nb_validation_samples // batch_size,
+    callbacks = [checkpointer,history,tens_board])
 
-model.save_weights('second_nn_from_scratch.h5')
+model.save_weights('second_nn_from_scratch_whitining_flips.h5')
 train_generator.reset()
 validation_generator.reset()
 
@@ -109,7 +120,7 @@ validation_generator.reset()
 # keras.callbacks.LambdaCallback(on_epoch_begin=None, on_epoch_end=None, on_batch_begin=None, on_batch_end=None, on_train_begin=None, on_train_end=None)
 # Save the model too
 
-top_model_weights_path = 'second_nn_from_scratch.h5'
+top_model_weights_path = 'second_nn_from_scratch_whitining_flips.h5'
 model.load_weights(top_model_weights_path)
 scores = model.evaluate_generator(validation_generator, steps = nb_validation_samples // batch_size)
 train_generator.reset()
@@ -128,7 +139,7 @@ filenames=train_generator.filenames[:len(predictions)]
 results=pd.DataFrame({"Filename":filenames,
                       "Predictions":predictions,
                       "Values":pred_vals.ravel()})
-results.to_csv("results_train_gen_second_nn.csv",index=False)
+results.to_csv("results_train_gen_second_nn_whitining_flips.csv",index=False)
 
 train_generator.reset()
 validation_generator.reset()
@@ -161,7 +172,7 @@ validation_generator.reset()
 # the name of the layer we want to visualize
 # (see model definition at keras/applications/vgg16.py)
 # layer_name = 'block5_conv1'
-layer_name =  model.layers[12].name #'conv2d_7' # conv2d_1'
+layer_name =  model.layers[6].name #'conv2d_7' # conv2d_1'
 print(layer_name)
 
 # util function to convert a tensor into a valid image
@@ -255,7 +266,7 @@ for filter_index in range(63):
     print('Filter %d processed in %ds' % (filter_index, end_time - start_time))
 
 # we will stich the best 64 filters on a 8 x 8 grid.
-n = 2
+n = 4
 
 # the filters that have the highest loss are assumed to be better-looking.
 # we will only keep the top 64 filters.
@@ -280,4 +291,4 @@ for i in range(n):
             height_margin: height_margin + img_height, :] = img
 
 # save the result to disk
-save_img('stitched_filters_%dx%d_second_nn.png' % (n, n), stitched_filters)
+save_img('stitched_filters_%dx%d_second_nn_whitining_flips.png' % (n, n), stitched_filters)

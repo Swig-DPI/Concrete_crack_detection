@@ -11,15 +11,15 @@ The data was sourced from the University of Utah and consists of labeled crack a
 
 ##### Bridge Deck
 Crack
-<img src="data/SDNET2018/D/CD/7002-48.jpg" height="120" width="120"> <img src="data/SDNET2018/D/UD/7004-13.jpg" height="120" width="120"> No Crack
+<img src="images/SDNET2018_small_set/D/CD/7002-48.jpg" height="120" width="120"> <img src="images/SDNET2018_small_set/D/UD/7004-13.jpg" height="120" width="120"> No Crack
 
 ##### Pavement
 Crack
-<img src="data/SDNET2018/P/CP/008-130.jpg" height="120" width="120"> <img src="data/SDNET2018/P/UP/007-173.jpg" height="120" width="120"> No Crack
+<img src="images/SDNET2018_small_set/P/CP/008-130.jpg" height="120" width="120"> <img src="images/SDNET2018_small_set/P/UP/007-173.jpg" height="120" width="120"> No Crack
 
 ##### Wall
 Crack
-<img src="data/SDNET2018/W/CW/7133-99.jpg" height="120" width="120"> <img src="data/SDNET2018/W/UW/7070-50.jpg" height="120" width="120"> No Crack
+<img src="images/SDNET2018_small_set/W/CW/7133-99.jpg" height="120" width="120"> <img src="images/SDNET2018_small_set/W/UW/7070-50.jpg" height="120" width="120"> No Crack
 
 <sub><sup>source: https://digitalcommons.usu.edu/all_datasets/48 </sup></sub>
 
@@ -89,12 +89,19 @@ The images are very 'noisy' they contain mostly dead image space with sparse cra
 
 Tensorflow-gpu does not work out of the box with Nvidia's Cuda library version 10.0.  In order to get this to work I would have had to download Tensorflows source code and make edits to it.  It does however work for version 8 and 9 of the Nvidia Cuda libraries.  Also I tried the easy one step install Frank sent out and had no luck.  I will be un-installing my current Cuda version 10 with 8 or 9 during break.
 
+### Future Work
+* Run more images through the model, at least 10,000.
+  * I believe this would allow for better classification.
+* Look at existing papers that use this set of data.  I just found that there was some work done on this data last year
+* Get my GPU working with tensorflow or use a different Keras backend.
+* Apply network to an actual structure to see if I can identify cracked areas.   
+
 
 ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
 
 
 
-Citation
+Citations
 
 Maguire, Marc; Dorafshan, Sattar; and Thomas, Robert J., "SDNET2018: A concrete crack image dataset for machine learning applications" (2018). Browse all Datasets. Paper 48.
 https://digitalcommons.usu.edu/all_datasets/48
