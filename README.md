@@ -45,7 +45,21 @@ Once the test and train data generators were fixed for sending both classes of i
 The next model I built added complexity with two extra hidden layers and increased the number of filters at each layer of the model.  I believed this would help the model pick up on more features due to the differing aggregate used in the concrete.
 
 #### Model Performance
-This model performed some what better with accuracies of around 65% and losses at 0.6 with only 25 epochs.  This model performed much better and showed promise with the lower loss values.  
+This model performed some what better with accuracies of around 65% and losses at 0.6 with only 15 epochs.  This model performed much better and showed promise with the lower loss values.  
+
+Look beautiful training
+
+
+<img src="images/Training_Acc.png" height="360" width="360">
+<img src="images/Training_loss.png" height="360" width="360">
+
+
+Not so great validation
+
+
+<img src="images/Validation_Acc.png" height="360" width="360">
+<img src="images/Validation_loss.png" height="360" width="360">
+
 
 #### Speculation about performance
 I am only using 1000 of the 56,000 images.  This does not look to be enough for the network to pick up on the correct feature maps.  I suspect if I trained on a bigger set of the pictures my model would begin to pick up on these nuances in the data and would begin to perform better.  There is also quite a bit of noise in the data with the varying sizes of aggregate in the pictures.  
@@ -95,6 +109,8 @@ Tensorflow-gpu does not work out of the box with Nvidia's Cuda library version 1
 * Look at existing papers that use this set of data.  I just found that there was some work done on this data last year
 * Get my GPU working with tensorflow or use a different Keras backend.
 * Apply network to an actual structure to see if I can identify cracked areas.   
+
+
 
 
 ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
