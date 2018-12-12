@@ -35,12 +35,12 @@ class LossHistory(keras.callbacks.Callback):
 # dimensions of our images.
 img_width, img_height = 256, 256
 
-train_data_dir = 'data/extra_cracky'
-validation_data_dir = 'data/test_train'
-nb_train_samples = 1000
-nb_validation_samples = 1000
+train_data_dir = 'data/test_train_hold/train'
+validation_data_dir = 'data/test_train_hold/test'
+nb_train_samples = 5600
+nb_validation_samples = 5600
 epochs = 15
-batch_size = 16
+batch_size = 50
 
 if K.image_data_format() == 'channels_first':
     input_shape = (3, img_width, img_height)
@@ -163,7 +163,7 @@ validation_generator.reset()
 
 
 
-
+'''
 ### visulization of layers
 
 
@@ -292,3 +292,4 @@ for i in range(n):
 
 # save the result to disk
 save_img('stitched_filters_%dx%d_second_nn_whitining_flips.png' % (n, n), stitched_filters)
+'''
