@@ -11,10 +11,10 @@ from keras.optimizers import RMSprop, adadelta
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from simple_cnn import create_cnn
+# from simple_cnn import create_cnn
 import os
 import glob
-from instantiate_transfer_model import create_transfer_model
+from Making_the_model import create_transfer_model
 
 # def channel_to_three(img):
 #     return np.stack((img,)*3, axis=-1)
