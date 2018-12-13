@@ -75,12 +75,14 @@ for idx1, df_i in enumerate(dfc_split):
 
 
 ## Move no crack files into dir
+count = 0
 print('Copying no crack files to created folders')
 for idx1, df_i in enumerate(dfnc_split):
     for idx2, df_row in df_i.iterrows():
         shutil.copy2(source_path+df_row['FullPath'], dest_path+dest_folder[idx1]+'/'+dest_folder_sub_dir[1])
         # this is to ensure an even split
-        if idx2 >= len(dfc_split[0]):
+        if count >= len(dfc_split[0]):
             break
+        count = count + 1
 
 print('Completed')
