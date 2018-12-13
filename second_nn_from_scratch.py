@@ -82,7 +82,7 @@ model.compile(loss='binary_crossentropy',
 
 # this is the augmentation configuration we will use for training
 train_datagen = ImageDataGenerator(
-    rescale=1. / 255,zca_whitening=True,horizontal_flip=True, vertical_flip=True)
+    rescale=1. / 255)
 
 # this is the augmentation configuration we will use for testing:
 # only rescaling
