@@ -19,7 +19,7 @@ from sklearn.utils import shuffle
 
 
 source_path = 'data/SDNET2018/' # This path should point to the downloaded SDNET2018 data set
-dest_path = 'data/test_train_hold/' # this path will create a directory to store the split files
+dest_path = 'data/test_train_hold_1/' # this path will create a directory to store the split files
 dest_folder = ['train', 'test', 'hold'] #  This is the folders which will be created
 dest_folder_sub_dir = ['crack','NO_crack'] # each folder will have these two sub folders.
 
@@ -79,5 +79,8 @@ print('Copying no crack files to created folders')
 for idx1, df_i in enumerate(dfnc_split):
     for idx2, df_row in df_i.iterrows():
         shutil.copy2(source_path+df_row['FullPath'], dest_path+dest_folder[idx1]+'/'+dest_folder_sub_dir[1])
+        # this is to ensure an even split
+        if idx2 >= len(dfc_split[0]):
+            break
 
 print('Completed')
