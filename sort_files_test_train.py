@@ -51,10 +51,7 @@ print('Splitting files')
 dfc_split = np.array_split(dfc,3)
 dfnc_split = np.array_split(dfnc,3)
 
-# Combine into single pandas arrays
-# dftrain = pd.concat([dfc_split[0],dfnc_split[0]])
-# dftest = pd.concat([dfc_split[1],dfnc_split[1]])
-# dfhold = pd.concat([dfc_split[2],dfnc_split[2]])
+
 
 ## Make directories
 print('Creating Folders')
@@ -85,5 +82,15 @@ for idx1, df_i in enumerate(dfnc_split):
         if count >= 2826:
             break
         count = count + 1
+
+print('Saving csv files of pandas dataframes')
+# Combine into single pandas arrays
+dftrain = pd.concat([dfc_split[0],dfnc_split[0]])
+dftest = pd.concat([dfc_split[1],dfnc_split[1]])
+dfhold = pd.concat([dfc_split[2],dfnc_split[2]])
+
+dftrain.to_csv('dftrain_csv.csv')
+dftest.to_csv('dftest_csv.csv')
+dfhold.to_csv('dfhold_csv.csv')
 
 print('Completed')
