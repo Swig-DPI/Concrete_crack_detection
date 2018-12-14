@@ -392,7 +392,7 @@ if __name__ == '__main__':
 
     #  Scores for hold out set
     top_model_weights_path = savename
-    model = load_weights(top_model_weights_path)
+    model = load_model(top_model_weights_path)
     metrics = model.evaluate_generator(transfer_cnn.holdout_generator,
                                        steps=transfer_cnn.num_holdout/transfer_cnn.batch_size,
                                        use_multiprocessing=True,
