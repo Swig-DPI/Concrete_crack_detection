@@ -1,3 +1,11 @@
+import os
+# give ability to use matplotlib in AWS instance
+import matplotlib as mpl
+if os.environ.get('DISPLAY','') == '':
+    print('no display found. Using non-interactive Agg backend')
+    mpl.use('Agg')
+
+
 import keras
 from keras.applications import InceptionV3, Xception, VGG16
 from keras.models import Sequential, load_model
@@ -12,7 +20,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 # from simple_cnn import create_cnn
-import os
 import glob
 from Making_the_model import create_transfer_model
 
@@ -117,6 +124,8 @@ class ClassificationCNN():
         self.build_generators()
         model = input_model(self.input_size, loss)
 
+        recall = as_keras_metric(tf.metrics.recall)
+
         model.compile(optimizer=optimizer, loss=self.loss_function, metrics=['accuracy'])
 
         #initialize tensorboard for monitoring
@@ -203,7 +212,8 @@ class ClassificationCNN():
         plt.xlabel('epochs', fontsize=16)
         plt.ylabel('loss', fontsize=16)
         plt.legend()
-        plt.show()
+        plt.savefig('Training_Validation_acc_loss')
+        # plt.show()
 
     def plot_model_2(self):
         acc = self.history.history['acc']
@@ -228,7 +238,8 @@ class ClassificationCNN():
         ax1.set_ylabel('loss', fontsize=14)
         ax1.legend()
         plt.tight_layout()
-        plt.show()
+        plt.savefig('Training_Validation_acc_loss2')
+        # plt.show()
 
 class TransferCNN(ClassificationCNN):
 
