@@ -427,7 +427,7 @@ if __name__ == '__main__':
     results=pd.DataFrame({"Filename":filenames,
                           "Predictions":predictions,
                           "Values":pred_vals.ravel()})
-    results.to_csv("transfer_learning_validation_set.csv",index=False
+    results.to_csv("transfer_learning_validation_set.csv",index=False)
 
     ###  Test set predictions to CSV
     predictions = model.predict_generator(self.test_generator, steps = transfer_cnn.num_test/transfer_cnn.batch_size)
