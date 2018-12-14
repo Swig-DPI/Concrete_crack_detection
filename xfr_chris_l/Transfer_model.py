@@ -305,6 +305,7 @@ class TransferCNN(ClassificationCNN):
         best_model = load_model(save_name)
         print('evaluating transfer model')
         accuracy = self.evaluate_model(best_model, self.holdout_folder)
+        print('evaluating transfer model complete')
 
         return save_name
 
@@ -337,7 +338,7 @@ if __name__ == '__main__':
     input_shape = (256,256,3)
     target_size = (256,256)
     scale = 255
-    epochs = 10
+    epochs = 30
 
     # simple_model = create_cnn
     # simple_cnn = ClassificationCNN('class_test_one', target_size, channels=1, augmentation_strength=0.1, preprocessing=None, batch_size=50, scale=65535)
@@ -367,11 +368,13 @@ if __name__ == '__main__':
 
     #VGG16
     model_name = VGG16
-    warmup_epochs = 5
+    warmup_epochs = 10
     epochs = epochs - warmup_epochs
     optimizers = [RMSprop(lr=0.0006), RMSprop(lr=0.0001)] # keep learning rates low to keep from wrecking weights
     train_head_idx = [19, 17, 15]
     transfer_model = create_transfer_model
     transfer_cnn = TransferCNN('transfer_test_one', target_size, channels=3, augmentation_strength=0.1, preprocessing=None, batch_size=50, scale=255)
+    print('Begin fit Model')
     savename = transfer_cnn.fit(model_name, train_folder, validation_folder, holdout_folder, transfer_model, 2, \
                         'binary_crossentropy', optimizers, epochs, train_head_idx, warmup_epochs=warmup_epochs)
+    print('Model Fit complete')
