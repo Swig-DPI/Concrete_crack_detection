@@ -1,7 +1,7 @@
 
 top_model_weights_path = savename
 model = load_weights(top_model_weights_path)
-scores = model.evaluate_generator(transfer_cnn.holdout_generator,
+metrics = model.evaluate_generator(transfer_cnn.holdout_generator,
                                    steps=transfer_cnn.num_holdout/transfer_cnn.batch_size,
                                    use_multiprocessing=True,
                                    verbose=1)

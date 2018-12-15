@@ -89,8 +89,8 @@ dftrain = pd.concat([dfc_split[0],dfnc_split[0]])
 dftest = pd.concat([dfc_split[1],dfnc_split[1]])
 dfhold = pd.concat([dfc_split[2],dfnc_split[2]])
 
-dftrain.to_csv('dftrain_csv.csv')
-dftest.to_csv('dftest_csv.csv')
-dfhold.to_csv('dfhold_csv.csv')
+dftrain.to_csv('data/dftrain_csv.csv')
+dftest.to_csv('data/dftest_csv.csv')
+dfhold.to_csv('data/dfhold_csv.csv')
 
 print('Completed')
