@@ -429,7 +429,7 @@ if __name__ == '__main__':
     results.to_csv("transfer_learning_validation_set.csv",index=False)
 
     ###  Test set predictions to CSV
-    predictions = model.predict_generator(transfer_cnn.train_generator, steps = transfer_cnn.num_test/transfer_cnn.batch_size)
+    predictions = model.predict_generator(transfer_cnn.train_generator, steps = transfer_cnn.num_train/transfer_cnn.batch_size)
     pred_vals = predictions
     vec = np.vectorize(lambda x: 1 if x>0.6 else 0)
     predicted_class_indices=vec(predictions)
