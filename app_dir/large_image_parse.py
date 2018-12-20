@@ -1,10 +1,13 @@
-from build_model import TextClassifier
+import os
+import matplotlib as mpl
+if os.environ.get('Display', '' ) == '':
+	print('no display found. Using non interactive agg backend')
+	mpl.use('Agg')
 from keras.models import load_model
 from keras.preprocessing import image
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import pdb
-import os
 import numpy as np
 
 
