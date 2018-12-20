@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <form>
+                <input type="file" multiple>
+            </form>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/imageuploadify/imageuploadify.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('input[type="file"]').imageuploadify();
+            })
+        </script>
+
+        <p><a href="/submit">Home!</a></p>
+
+    </body>
+</html>

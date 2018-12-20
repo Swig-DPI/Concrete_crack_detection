@@ -1,0 +1,30 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Scott Wigle Concrete Classifier</title>
+
+  <meta name="description" content="Concrete Classifier">
+  <meta name="author" content="Scott Wigle">
+
+</head>
+
+<body>
+
+  <h1>Your Predicted Type</h1>
+
+  <span style="color: blue; font-weight: bold;">Your Article</span>
+  <p>'{{ upload_file }}'</p>
+  <span style="color: blue; font-weight: bold;">Your Predicted Class</span>
+  <p>{{ predicted }}</p>
+
+  <img src='/static/images_f/{{upload_file}}' alt="User Image" style="width:400px;height:400px;">
+
+  <p><a href="/submit">Predict again?!</a></p>
+
+</body>
+</html>

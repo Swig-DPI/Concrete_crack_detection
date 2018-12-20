@@ -1,0 +1,28 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Scott Wigle Concrete Classifier</title>
+
+  <meta name="description" content="Concrete Classifier">
+  <meta name="author" content="Scott Wigle">
+
+</head>
+
+<body>
+
+  <h1>Your Predicted Type. </h1>
+
+  <span style="color: blue; font-weight: bold;">Blue boxes = predicted no crack. Red Boxes = predicted crack</span>
+  <p>'{{ upload_file }}'</p>
+
+  <img src='/static/images_predicted/{{upload_file}}' alt="User Image" style="width:600px;height:600px;">
+
+  <p><a href="/submit">Predict again?!</a></p>
+
+</body>
+</html>
