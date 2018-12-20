@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import pickle
-from build_model import TextClassifier
 from keras.models import load_model
-# import pillow
 from keras.preprocessing import image
 import pdb
 from werkzeug.utils import secure_filename
@@ -76,4 +74,4 @@ def extra():
     render_template('form/extra.html', article=file_loc, predicted=prediction)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0:5002', debug=True)
