@@ -35,10 +35,11 @@ def predict():
     """Recieve the image to be classified from an input form and use the
     model to classify.
     """
+    dir_path = os.path.dirname(os.path.realpath('./')) + '/app_dir'
 
     file = request.files['image']
     filename = secure_filename(file.filename)
-    file_loc = '/home/smw/Documents/galvanize/capstone_zone/crack_detection/app_dir/static/images_f'+'/'+filename
+    file_loc = dir_path + '/static/images_f'+'/'+filename
     file.save(file_loc)
 
     img = image.load_img(file_loc)
@@ -63,7 +64,7 @@ def predict():
         return render_template('form/predict.html', upload_file=filename, predicted=prediction)
 
     else:
-        run_all(model, img, file_save='/home/smw/Documents/galvanize/capstone_zone/crack_detection/app_dir/static/images_predicted/'+filename )
+        run_all(model, img, file_save=dir_path+'/static/images_predicted/'+filename )
         return render_template('form/predict2.html', upload_file=filename)
 
 
@@ -74,4 +75,4 @@ def extra():
     render_template('form/extra.html', article=file_loc, predicted=prediction)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0:5002', debug=True)
+    app.run(host='0.0.0.0', port=5002, debug=True)

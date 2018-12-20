@@ -10,9 +10,9 @@ COPY ./requirements.txt /app/requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 # Copy the current work directory /app
 COPY . /app
-# Make port 5002 visable
+# Make port 5002 visible
 EXPOSE 5002
 # Define environment variable
 ENV NAME World
 # Run app.py when the container launches
-# CMD ["python", "app.py"]
+CMD ["python", "app_dir/form_app.py"]
