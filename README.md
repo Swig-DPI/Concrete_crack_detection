@@ -1,5 +1,5 @@
 # Crack Detection - Initial
-The purpose of this project was to train a neural net to detect if a picture of concrete contained a crack or not. This project was devised to help reduce time engineers spent on structures inspecting them.  Being able to detect and highlight cracks will not only save money it will increase safety.  See Crack_Detection_Continued.pdf for a continuation of the work. 
+The purpose of this project was to train a neural net to detect if a picture of concrete contained a crack or not. This project was devised to help reduce time engineers spent on structures inspecting them.  Being able to detect and highlight cracks will not only save money it will increase safety.  See https://github.com/Swig-DPI/Concrete_crack_detection/blob/master/Crack_Detection_Continued.pdf for a continuation of the work. 
 
 
 <img src="https://www.usbr.gov/lc/region/feature/gallery-rope-team/Beginning-the-descent.jpg" alt="https://www.usbr.gov/lc/region/feature/gallery-rope-team/Beginning-the-descent.jpg" class="shrinkToFit" width="236" height="354">
@@ -143,6 +143,8 @@ Tensorflow-gpu does not work out of the box with Nvidia's Cuda library version 1
 * Get my GPU working with tensorflow or use a different Keras backend.
 * Apply network to an actual structure to see if I can identify cracked areas.  
 * Print out each convolution layer with a crack to see what is being activated.
+
+See https://github.com/Swig-DPI/Concrete_crack_detection/blob/master/Crack_Detection_Continued.pdf for a continuation of the work. 
 
 
 
