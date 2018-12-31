@@ -1,5 +1,5 @@
-# Crack Detection
-The purpose of this project was to train a neural net to detect if a picture of concrete contained a crack or not. This project was devised to help reduce time engineers spent on structures inspecting them.  Being able to detect and highlight cracks will not only save money it will increase safety.  
+# Crack Detection - Initial
+The purpose of this project was to train a neural net to detect if a picture of concrete contained a crack or not. This project was devised to help reduce time engineers spent on structures inspecting them.  Being able to detect and highlight cracks will not only save money it will increase safety.  See Crack_Detection_Continued.pdf for a continuation of the work. 
 
 
 <img src="https://www.usbr.gov/lc/region/feature/gallery-rope-team/Beginning-the-descent.jpg" alt="https://www.usbr.gov/lc/region/feature/gallery-rope-team/Beginning-the-descent.jpg" class="shrinkToFit" width="236" height="354">
